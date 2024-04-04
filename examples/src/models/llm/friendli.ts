@@ -4,29 +4,25 @@ const model = new Friendli({
   model: "mixtral-8x7b-instruct-v0-1", // Default value
   friendliToken: process.env.FRIENDLI_TOKEN,
   friendliTeam: process.env.FRIENDLI_TEAM,
-  maxTokens: 1024,
-  temperature: 0.85,
-  topP: 0.95,
+  maxTokens: 18,
+  temperature: 0.75,
+  topP: 0.25,
   frequencyPenalty: 0,
   stop: [],
 });
 
 const response = await model.invoke(
-  "Generate a customer persona for someone passionate about sustainability. Explore their values, lifestyle choices, and preferences in sustainable products."
+  "Check the Grammar: She dont like to eat vegetables, but she loves fruits."
 );
 
 console.log(response);
 
 /*
-Values:
-- Environmental preservation and restoration
-- Social equality
-- Ethical consumerism
-...
+Correct: She doesn't like to eat vegetables, but she loves fruits
 */
 
 const stream = await model.stream(
-  "Generate a customer persona for someone passionate about sustainability. Explore their values, lifestyle choices, and preferences in sustainable products."
+  "Check the Grammar: She dont like to eat vegetables, but she loves fruits."
 );
 
 for await (const chunk of stream) {
@@ -34,15 +30,13 @@ for await (const chunk of stream) {
 }
 
 /*
-  Hello
-  !
-   I
-  '
-  m
-  ...
-
-  focus
-  ed
-   consumers
-  .
+Cor
+rect
+:
+ She
+ doesn
+...
+she
+ loves
+ fruits
 */

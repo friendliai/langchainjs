@@ -34,16 +34,14 @@ for await (const chunk of stream) {
 }
 
 /*
-
-   D
-  ear
-   [
-  H
-  iring
-  ...
-
-  [
-  Your
-   Name
-  ]
+D
+ear
+ [
+H
+iring
+...
+[
+Your
+ Name
+]
 */
