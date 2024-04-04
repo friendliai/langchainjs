@@ -99,8 +99,8 @@ function _convertDeltaToMessageChunk(
 }
 
 /**
- * The FriendliParams interface defines the input parameters for
- * the Friendli class.
+ * The ChatFriendliParams interface defines the input parameters for
+ * the ChatFriendli class.
  */
 export interface ChatFriendliParams extends BaseChatModelParams {
   /**
