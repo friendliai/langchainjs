@@ -1,5 +1,5 @@
 import { Serializable, SerializedConstructor } from "../load/serializable.js";
-import type { StringWithAutocomplete } from "../utils/types.js";
+import type { StringWithAutocomplete } from "../utils/types/index.js";
 
 export interface StoredMessageData {
   content: string;
@@ -49,7 +49,13 @@ export type MessageContentImageUrl = {
   image_url: string | { url: string; detail?: ImageDetail };
 };
 
-export type MessageContentComplex = MessageContentText | MessageContentImageUrl;
+export type MessageContentComplex =
+  | MessageContentText
+  | MessageContentImageUrl
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | (Record<string, any> & { type?: "text" | "image_url" | string })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | (Record<string, any> & { type?: never });
 
 export type MessageContent = string | MessageContentComplex[];
 
